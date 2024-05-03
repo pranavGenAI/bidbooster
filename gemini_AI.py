@@ -23,7 +23,7 @@ Follow these simple steps to interact with the chatbot:
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 
-file_ = open("/BidBooster/giphy.gif", "rb")
+file_ = open("BidBooster/giphy.gif", "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 file_.close()
@@ -96,7 +96,7 @@ def main():
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
         
-        file_ = open("/BidBooster/bot.gif", "rb")
+        file_ = open("BidBooster/bot.gif", "rb")
         contents = file_.read()
         data_url = base64.b64encode(contents).decode("utf-8")
         file_.close()
