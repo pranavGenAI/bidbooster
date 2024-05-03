@@ -53,7 +53,7 @@ def get_conversational_chain():
     provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n. And remember to format your answer in nicer way.
     Do not copy and paste the context. Summarize it in better way and then provide the answer. 
     Context:\n {context}?\n
-    Question: \n{question}\n
+    Question: \n{question}\n .Provide summarize answer in easy to understand language and format it in better way.
 
     Answer:
     """
