@@ -81,8 +81,7 @@ def main():
         user_input(user_question, api_key)
 
     with st.sidebar:    
-        st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
-
+        
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
@@ -91,7 +90,8 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-        
+        st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=130)
+
 
 if __name__ == "__main__":
     main()
