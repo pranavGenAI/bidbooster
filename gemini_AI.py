@@ -51,6 +51,7 @@ def get_conversational_chain():
     prompt_template = """
     Answer the question as detailed as possible from the provided context and in polite way, make sure to provide all the details, if the answer is not in
     provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n. And remember to format your answer in nicer way.
+    Do not copy and paste the context. Summarize it in better way and then provide the answer. 
     Context:\n {context}?\n
     Question: \n{question}\n
 
