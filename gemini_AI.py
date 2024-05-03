@@ -15,7 +15,7 @@ st.set_page_config(page_title="Document Genie", layout="wide")
 st.markdown("""
 ## BidBooster 🤗💬: Answers your RFP related query.
 
-### How It Works
+### How It Works?
 
 Follow these simple steps to interact with the chatbot:
 1. **Upload the RFP document and click on submit & process** (Please note: the base LLM model is fine-tuned on LCBO ESG RFP documents. Results may vary for other documents).
