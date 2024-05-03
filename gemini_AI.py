@@ -12,7 +12,7 @@ from langchain_community.vectorstores import FAISS
 
 st.set_page_config(page_title="BidBooster Query Bot", layout="wide")
 
-st.markdown("""
+#st.markdown("""
 ## BidBooster 🤗💬: Answers your RFP related query.
 
 ### How It Works?
