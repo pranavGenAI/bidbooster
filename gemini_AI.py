@@ -23,16 +23,6 @@ Follow these simple steps to interact with the chatbot:
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 
-st.markdown("![Alt Text](https://giphy.com/gifs/CytKuRG1UCciXh9SDx)")
-file_ = open("BidBooster/giphy.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
-st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="arrow gif" width="50" height="50">',
-    unsafe_allow_html=True,
-)
-
 # This is the first API key input; no need to repeat it in the main function.
 #api_key = st.text_input("Enter your Google API Key:", type="password", key="api_key_input")
 
@@ -97,14 +87,7 @@ def main():
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
         
-        file_ = open("BidBooster/bot.gif", "rb")
-        contents = file_.read()
-        data_url = base64.b64encode(contents).decode("utf-8")
-        file_.close()
-        st.markdown(
-            f'<img src="data:image/gif;base64,{data_url}" alt="arrow gif" width="200" height="200">',
-            unsafe_allow_html=True,
-        )
+
 
 if __name__ == "__main__":
     main()
