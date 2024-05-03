@@ -23,10 +23,11 @@ Follow these simple steps to interact with the chatbot:
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 
+st.markdown('<img src="https://giphy.com/stickers/100Leiden-arrow-pijl-100leiden-CGP9713UVzQ0BQPhSf" alt="Alt Text" width="50" height="50">', unsafe_allow_html=True)
+
 # This is the first API key input; no need to repeat it in the main function.
 #api_key = st.text_input("Enter your Google API Key:", type="password", key="api_key_input")
 
-st.markdown("![Alt Text](https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")
 
 api_key = st.secrets['GEMINI_API_KEY']
 def get_pdf_text(pdf_docs):
@@ -88,8 +89,8 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-        
-
+    st.markdown("![Alt Text](https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")    
+    
 
 if __name__ == "__main__":
     main()
