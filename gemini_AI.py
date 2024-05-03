@@ -23,7 +23,7 @@ Follow these simple steps to interact with the chatbot:
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 
-st.markdown('<img src="https://giphy.com/stickers/100Leiden-arrow-pijl-100leiden-CGP9713UVzQ0BQPhSf" alt="Alt Text" width="50" height="50">', unsafe_allow_html=True)
+st.markdown('<img src="https://giphy.com/stickers/100Leiden-arrow-pijl-100leiden-CGP9713UVzQ0BQPhSf" width="50" height="50">')
 
 # This is the first API key input; no need to repeat it in the main function.
 #api_key = st.text_input("Enter your Google API Key:", type="password", key="api_key_input")
@@ -80,7 +80,7 @@ def main():
     if user_question and api_key:  # Ensure API key and user question are provided
         user_input(user_question, api_key)
 
-    with st.sidebar:
+    with st.sidebar:    
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
@@ -89,8 +89,8 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-    st.markdown("![Alt Text](https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")    
-    
+         st.markdown("![Alt Text](https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")
+        
 
 if __name__ == "__main__":
     main()
