@@ -23,7 +23,7 @@ Follow these simple steps to interact with the chatbot:
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 
-st.markdown("![Alt Text](https://https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)"
+st.markdown("![Alt Text](https://https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")
             
 file_ = open("BidBooster/giphy.gif", "rb")
 contents = file_.read()
