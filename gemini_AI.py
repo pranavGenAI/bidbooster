@@ -18,8 +18,9 @@ st.markdown("""
 ### How It Works
 
 Follow these simple steps to interact with the chatbot:
-
-**Ask a Question**: After processing the documents, ask any question related to the content of your uploaded documents for a precise answer.
+1. **Upload the RFP document and click on submit & process** (Please note: the base LLM model is fine-tuned on LCBO ESG RFP documents. Results may vary for other documents).
+2. **Ask a Question:** Once the document is processed, ask any question related to its content for a precise answer.
+3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 
 
