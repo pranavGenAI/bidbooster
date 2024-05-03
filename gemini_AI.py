@@ -89,7 +89,7 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-         st.markdown("![Alt Text](https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")
+        st.markdown("![Alt Text](https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif)")
         
 
 if __name__ == "__main__":
