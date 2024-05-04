@@ -23,20 +23,12 @@ Follow these simple steps to interact with the chatbot:
 2. **Ask a Question:** Once the document is processed, ask any question related to its content for a precise answer.
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
-file_ = open("C:/Users/pranav.baviskar/Desktop/Learning/GenAI/BidBooster/giphy.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
-#data_url = "C:/Users/pranav.baviskar/Desktop/Learning/GenAI/BidBooster/giphy.gif"
-st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="arrow gif" width="50" height="50">',
-    unsafe_allow_html=True,
-)
+st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
+
 
 # This is the first API key input; no need to repeat it in the main function.
-#api_key = st.text_input("Enter your Google API Key:", type="password", key="api_key_input")
+#api_key = st.secrets['GEMINI_API_KEY']
 
-api_key = 'AIzaSyAJT6_IYPjUtUyT14uzZ8BSON7rDul7Ab8'
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -97,15 +89,8 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-
-        file_ = open("C:/Users/pranav.baviskar/Desktop/Learning/GenAI/BidBooster/bot.gif", "rb")
-        contents = file_.read()
-        data_url = base64.b64encode(contents).decode("utf-8")
-        file_.close()
-        #data_url = "C:/Users/pranav.baviskar/Desktop/Learning/GenAI/BidBooster/giphy.gif"
-        st.markdown(
-            f'<img src="data:image/gif;base64,{data_url}" alt="arrow gif" width="200" height="200">',
-            unsafe_allow_html=True,
+        st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
+        
         )
 
 
