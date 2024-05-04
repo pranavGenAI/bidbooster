@@ -77,15 +77,15 @@ def main():
     if user_question and api_key:  # Ensure API key and user question are provided
 #        user_input(user_question, api_key)
         with st.sidebar:    
-        st.title("BidBooster 🤗💬")
-        pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
-        if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
-            with st.spinner("Processing..."):
-                raw_text = get_pdf_text(pdf_docs)
-                text_chunks = get_text_chunks(raw_text)
-                get_vector_store(text_chunks, api_key)
-                st.success("Done")
-        st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
+            st.title("BidBooster 🤗💬")
+            pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
+            if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
+                with st.spinner("Processing..."):
+                    raw_text = get_pdf_text(pdf_docs)
+                    text_chunks = get_text_chunks(raw_text)
+                    get_vector_store(text_chunks, api_key)
+                    st.success("Done")
+            st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
 
 if __name__ == "__main__":
     main()
