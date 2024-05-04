@@ -75,7 +75,7 @@ def main():
     st.header("BidBooster Chatbot")
     user_question = st.text_input("Ask a Question from the PDF Files", key="user_question")
     if user_question and api_key:  # Ensure API key and user question are provided
-#        user_input(user_question, api_key)
+        user_input(user_question, api_key)
         with st.sidebar:    
             st.title("BidBooster 🤗💬")
             pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
