@@ -90,8 +90,6 @@ def main():
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
         st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
-        
-        )
 
 
 if __name__ == "__main__":
