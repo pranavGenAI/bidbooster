@@ -12,23 +12,23 @@ from langchain_community.vectorstores import FAISS
 
 st.set_page_config(page_title="BidBooster Query Bot", layout="wide")
 
-#st.markdown("""
+st.markdown("""
 ## BidBooster 🤗💬: Answers your RFP related query.
 
 ### How It Works?
 
-#Follow these simple steps to interact with the chatbot:
-#1. **Upload the RFP document and click on submit & process** (Please note: the base LLM model is fine-tuned on LCBO ESG RFP documents. Results may vary for other documents).
-#2. **Ask a Question:** Once the document is processed, ask any question related to its content for a precise answer.
-#3. Ensure your **prompt is clear and complete** with some context for better result.
-#""")
+Follow these simple steps to interact with the chatbot:
+1. **Upload the RFP document and click on submit & process** (Please note: the base LLM model is fine-tuned on LCBO ESG RFP documents. Results may vary for other documents).
+2. **Ask a Question:** Once the document is processed, ask any question related to its content for a precise answer.
+3. Ensure your **prompt is clear and complete** with some context for better result.
+""")
 
-#st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
+st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
 
 # This is the first API key input; no need to repeat it in the main function.
-st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
+#st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
 
-#api_key = st.secrets['GEMINI_API_KEY']
+api_key = st.secrets['GEMINI_API_KEY']
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
