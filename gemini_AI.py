@@ -23,11 +23,11 @@ Follow these simple steps to interact with the chatbot:
 2. **Ask a Question:** Once the document is processed, ask any question related to its content for a precise answer.
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
-st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
+#st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
 
 
 # This is the first API key input; no need to repeat it in the main function.
-#api_key = st.secrets['GEMINI_API_KEY']
+api_key = st.secrets['GEMINI_API_KEY']
 
 def get_pdf_text(pdf_docs):
     text = ""
