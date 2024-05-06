@@ -50,11 +50,10 @@ def get_vector_store(text_chunks, api_key):
 
 def get_conversational_chain():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context and in polite way, make sure to provide all the details in summarized format. , if the answer is not in
-    provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n. And remember to format your answer in nicer way.
-    Do not copy and paste the context. Summarize it in better way and then provide the answer. 
+    Answer the question as detailed as possible from the provided context and in polite way, make sure to provide all the details in summarized format. Don't provide the wrong answer\n\n. And remember to format your answer in nicer way.
+    Do not copy and paste the context. If information is not in the context then you can make the best possible answer but inform user that this answer is not from the context. 
     Context:\n {context}?\n
-    Question: \n{question}\n .Provide summarize answer in easy to understand language and format it in better way. Do not copy and paste the context but summarize it and change wording.
+    Question: \n{question}\n .Provide summarize answer in easy to understand language and format it in better way. Provide the disclaimer in best possible way at the of question saying the answer is based on the context and accuracy needs to be checked from the source.
 
     Answer:
     """
