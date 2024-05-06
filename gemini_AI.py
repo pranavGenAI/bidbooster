@@ -82,7 +82,7 @@ def main():
         user_input(user_question, api_key)
 
     with st.sidebar:
-        st.title("BidBooster:")
+        st.title("BidBooster 🤗💬")
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
             with st.spinner("Processing..."):
