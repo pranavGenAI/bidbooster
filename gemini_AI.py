@@ -70,7 +70,7 @@ def user_input(user_question, api_key):
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
-    st.write("Reply: ", response["output_text"])
+    st.write("BidBooster: ", response["output_text"])
 
 def main():
     st.header("BidBooster Chatbot")
