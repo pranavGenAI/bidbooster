@@ -24,6 +24,7 @@ Follow these simple steps to interact with the chatbot:
 3. Ensure your **prompt is clear and complete** with some context for better result.
 """)
 #st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
+st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
 
 
 # This is the first API key input; no need to repeat it in the main function.
@@ -75,14 +76,14 @@ def user_input(user_question, api_key):
 def main():
     st.header("BidBooster Chatbot")
 
-    user_question = st.text_input("Ask a Question from the PDF Files", key="user_question")
+    user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
 
     if user_question and api_key:  # Ensure API key and user question are provided
         user_input(user_question, api_key)
 
     with st.sidebar:
-        st.title("Menu:")
-        pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
+        st.title("BidBooster:")
+        pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
             with st.spinner("Processing..."):
                 raw_text = get_pdf_text(pdf_docs)
