@@ -118,7 +118,7 @@ def main():
                 conversation_string = get_conversation_string()
                 # st.code(conversation_string)
                 refined_query = query_refiner(conversation_string, user_question)
-                st.write("Refined Query:")
+                #st.write("Refined Query:")
                 st.write(refined_query)
 
 
