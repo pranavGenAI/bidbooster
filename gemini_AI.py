@@ -108,7 +108,7 @@ def query_refiner(conversation, user_question):
 st.markdown("""
 <style>
 .small-font {
-    font-size:15px !important;
+    font-size:12px !important;
     color: lightgrey !important;
 }
 </style>
