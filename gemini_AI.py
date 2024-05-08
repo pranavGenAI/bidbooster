@@ -108,7 +108,7 @@ def query_refiner(conversation, user_question):
 st.markdown("""
 <style>
 .small-font {
-    font-size:20px !important;
+    font-size:10px !important;
     color: lightgrey !important;
 }
 </style>
@@ -126,7 +126,6 @@ def main():
                 conversation_string = get_conversation_string()
                 # st.code(conversation_string)
                 refined_query = query_refiner(conversation_string, user_question)
-                st.markdown('<p class="small-font">Query Suggestion!!</p>', unsafe_allow_html=True)
                 st.markdown('<p class="small-font">Query Suggestion!!</p>', unsafe_allow_html=True)
                 query_suggestion = "Your query suggestion here"
                 st.markdown(f'<p class="small-font">{refined_query}</p>', unsafe_allow_html=True)
