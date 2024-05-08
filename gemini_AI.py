@@ -11,7 +11,7 @@ from langchain.prompts import PromptTemplate
 import os
 from langchain_community.vectorstores import FAISS
 
-st.set_page_config(page_title="BidBooster", layout="wide")
+st.set_page_config(page_title="BidBooster ", layout="wide")
 
 st.markdown("""
 ## BidBooster 🤗💬: Answers your RFP related query.
