@@ -71,6 +71,33 @@ def user_input(user_question, api_key):
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
     st.write("BidBooster: ", response["output_text"])
 
+def get_conversation_string():
+    conversation_string = ""
+    for i in range(len(st.session_state['responses'])-1):
+        
+        conversation_string += "Human: "+st.session_state['requests'][i] + "\n"
+        conversation_string += "Bot: "+ st.session_state['responses'][i+1] + "\n"
+    return conversation_string
+
+def query_refiner(conversation, user_question):
+    prompt=f"""
+    Given the following user query and conversation log, formulate a question that would be the most relevant to provide the user with an answer from a knowledge base.\n\nCONVERSATION LOG: \n{conversation}\n\nQuery: {user_question}\n\nRefined Query:"
+
+    """
+    
+    prompt = PromptTemplate(template=prompt, input_variables=["conversation","user_question"])
+    print("Prompt is....",prompt)
+    model = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3, google_api_key=api_key)
+    chat_llm_chain = LLMChain(
+        llm=model,
+        prompt=prompt,
+        verbose=True
+    )    
+    response = chat_llm_chain.predict(user_question=user_question)
+    print("Response of refined query is ----->",response)
+    return response
+
+
 def main():
     st.header("BidBooster Chatbot")
 
@@ -78,6 +105,14 @@ def main():
 
     if user_question and api_key:  # Ensure API key and user question are provided
         user_input(user_question, api_key)
+        if user_question:
+            with st.spinner("typing..."):
+                conversation_string = get_conversation_string()
+                # st.code(conversation_string)
+                refined_query = query_refiner(conversation_string, user_question)
+                st.subheader("Refined Query:")
+                st.write(refined_query)
+
 
     with st.sidebar:
         st.title("BidBooster 🤗💬")
