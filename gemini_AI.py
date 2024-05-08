@@ -105,6 +105,13 @@ def query_refiner(conversation, user_question):
     print("Response of refined query is ----->",response)
     return response
 
+st.markdown("""
+<style>
+.small-font {
+    font-size:50px !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 def main():
     st.header("BidBooster Chatbot")
@@ -118,7 +125,7 @@ def main():
                 conversation_string = get_conversation_string()
                 # st.code(conversation_string)
                 refined_query = query_refiner(conversation_string, user_question)
-                #st.write("Refined Query:")
+                st.markdown('<p class="small-font">Refined Query!!</p>', unsafe_allow_html=True)
                 st.write(refined_query)
 
 
