@@ -30,6 +30,13 @@ st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81
 # This is the first API key input; no need to repeat it in the main function.
 api_key = st.secrets['GEMINI_API_KEY']
 
+if 'responses' not in st.session_state:
+    st.session_state['responses'] = ["How can I assist you?"]
+
+if 'requests' not in st.session_state:
+    st.session_state['requests'] = []
+
+
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
