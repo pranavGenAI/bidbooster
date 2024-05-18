@@ -108,7 +108,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
-    st.header("BidBooster Chatbot")
+    st.header("Chat with BidBooster")
 
     user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
 
