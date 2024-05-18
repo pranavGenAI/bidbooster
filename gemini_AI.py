@@ -169,8 +169,8 @@ if __name__ == "__main__":
     }    
 
     [data-testid=baseButton-secondary] {
-    color:#FFFFFF;
-    border: none;
+        color:#FFFFFF;
+        border: none;
     }
     </style>''', unsafe_allow_html=True)
     main()
