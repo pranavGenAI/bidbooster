@@ -14,7 +14,7 @@ from langchain.chains import LLMChain
 
 st.set_page_config(page_title="BidBooster ", layout="wide")
 
-st.markdown("""<p style="font-family:Graphik; font-size: 42px; background: linear-gradient(45deg, #f53a7e 30%, #c801c8 55%, #c52df3 20%); -webkit-background-clip: text; color: transparent;">
+st.markdown("""<p style="font-family:Graphik Semibold; font-size: 42px; background: linear-gradient(45deg, #f53a7e 30%, #c801c8 55%, #c52df3 20%); -webkit-background-clip: text; color: transparent;">
 BidBooster: Simplifying Your Bid Process!.
 </p>""", unsafe_allow_html=True)
 
@@ -116,16 +116,17 @@ def main():
     if user_question and api_key:  # Ensure API key and user question are provided
         user_input(user_question, api_key)
         if user_question:
-            with st.spinner("typing..."):
-                conversation_string = get_conversation_string()
-                # st.code(conversation_string)
-                refined_query = query_refiner(conversation_string, user_question)
-                st.markdown('<p class="small-font">---------------------------------------------------------------------------------------------------------------------</p>', unsafe_allow_html=True)
-                
-                st.markdown('<p class="small-font">Query Suggestion!!</p>', unsafe_allow_html=True)
-                query_suggestion = "Your query suggestion here"
-                st.markdown(f'<p class="small-font">{refined_query}</p>', unsafe_allow_html=True)
-                #st.write(refined_query)
+            if st.button("Ask Question"):
+                with st.spinner("typing..."):
+                    conversation_string = get_conversation_string()
+                    # st.code(conversation_string)
+                    refined_query = query_refiner(conversation_string, user_question)
+                    st.markdown('<p class="small-font">---------------------------------------------------------------------------------------------------------------------</p>', unsafe_allow_html=True)
+                    
+                    st.markdown('<p class="small-font">Query Suggestion!!</p>', unsafe_allow_html=True)
+                    query_suggestion = "Your query suggestion here"
+                    st.markdown(f'<p class="small-font">{refined_query}</p>', unsafe_allow_html=True)
+                    #st.write(refined_query)
 
 
     with st.sidebar:
