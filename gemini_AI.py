@@ -167,5 +167,10 @@ if __name__ == "__main__":
         position:relative;
         top:3px;
     }    
+
+    [data-testid=baseButton-secondary] {
+    color:#FFFFFF;
+    border: none;
+    }
     </style>''', unsafe_allow_html=True)
     main()
