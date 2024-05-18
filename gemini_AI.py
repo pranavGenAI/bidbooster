@@ -144,5 +144,36 @@ if __name__ == "__main__":
     with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
         css = f.read()
         
-    st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+    st.markdown(f'<style>
+        .stApp > header {
+        background-color: transparent;
+    }
+    .stApp {
+        background: linear-gradient(45deg, #1152bb 10%, #0E1117 45%, #0E1117 55%, #3a5683 90%);
+        animation: my_animation 20s ease infinite;
+        background-size: 200% 200%;
+        background-attachment: fixed;
+    }
+    @keyframes my_animation {
+        0% {background-position: 0% 0%;}
+        50% {background-position: 100% 100%;}
+        100% {background-position: 0% 0%;}
+    }
+    [data-testid=stSidebar] {
+        background: linear-gradient(360deg, #1a2631 95%, #161d29 10%);
+    }
+    div.stButton > button:first-child {
+        background:linear-gradient(45deg, #c9024b 45%, #ba0158 55%, #cd006d 70%);
+        color: white;
+        border: none;
+    }
+    div.stButton > button:hover {
+        background:linear-gradient(45deg, #ce026f 45%, #970e79 55%, #6c028d 70%);
+        background-color:#ce1126;
+    }
+    div.stButton > button:active {
+        position:relative;
+        top:3px;
+    }    
+    </style>', unsafe_allow_html=True)
     main()
