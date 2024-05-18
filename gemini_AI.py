@@ -141,7 +141,7 @@ def main():
 
 
 if __name__ == "__main__":
-    with open('wave.css') as f:
+    with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
         css = f.read()
         
     st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
