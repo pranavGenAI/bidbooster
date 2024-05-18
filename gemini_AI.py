@@ -141,7 +141,7 @@ def main():
 
 
 if __name__ == "__main__":
-    with open('C:/Users/pranav.baviskar/Desktop/Learning/GenAI/BidBooster/wave.css') as f:
+    with open('wave.css') as f:
         css = f.read()
         
     st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
