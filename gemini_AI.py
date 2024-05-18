@@ -121,7 +121,11 @@ def main():
 
 
     with st.sidebar:
-        st.title("BidBooster 🤗💬")
+        st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=80)
+        st.markdown("")
+        st.markdown("")
+        
+        st.title("BidBooster 💬")
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
             with st.spinner("Processing..."):
