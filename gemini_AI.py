@@ -133,7 +133,7 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-        st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
+      #  st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
 
 
 if __name__ == "__main__":
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     }
     .stApp {
         background: linear-gradient(45deg, #0a1621 20%, #0E1117 45%, #0E1117 55%, #3a5683 90%);
-        animation: my_animation 20s ease infinite;
+        animation: my_animation 10s ease infinite;
         background-size: 200% 200%;
         background-attachment: fixed;
     }
