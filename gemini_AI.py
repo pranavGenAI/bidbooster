@@ -141,10 +141,10 @@ def main():
 
 
 if __name__ == "__main__":
-    with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
-        css = f.read()
+    # with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
+        # css = f.read()
         
-    st.markdown(f'<style>
+    st.markdown('''<style>
         .stApp > header {
         background-color: transparent;
     }
@@ -175,5 +175,5 @@ if __name__ == "__main__":
         position:relative;
         top:3px;
     }    
-    </style>', unsafe_allow_html=True)
+    </style>''', unsafe_allow_html=True)
     main()
