@@ -15,7 +15,7 @@ from langchain.chains import LLMChain
 st.set_page_config(page_title="BidBooster ", layout="wide")
 
 st.markdown("""<p style="font-family:Graphik Semibold; font-size: 42px; background: linear-gradient(45deg, #f53a7e 30%, #c801c8 55%, #c52df3 20%); -webkit-background-clip: text; color: transparent;">
-BidBooster: Simplifying Your Bid Process!.
+BidBooster: Simplifying Your Bid Process!
 </p>""", unsafe_allow_html=True)
 
 #st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
@@ -41,7 +41,7 @@ def get_pdf_text(pdf_docs):
     return text
 
 def get_text_chunks(text):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=40000, chunk_overlap=1000)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=10000, chunk_overlap=1000)
     chunks = text_splitter.split_text(text)
     return chunks
 
@@ -141,7 +141,7 @@ if __name__ == "__main__":
         background-color: transparent;
     }
     .stApp {
-        background: linear-gradient(45deg, #0E1117 45%, #0E1117 55%, #3a5683 90%);
+        background: linear-gradient(45deg, #0a1621 20%, #0E1117 45%, #0E1117 55%, #3a5683 90%);
         animation: my_animation 20s ease infinite;
         background-size: 200% 200%;
         background-attachment: fixed;
