@@ -35,7 +35,7 @@ st.markdown("""
             background-size: 300% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientAnimation 7s ease-in-out infinite;
+            animation: gradientAnimation 10s ease-in-out infinite;
         }
     </style>
     <p class="animated-gradient-text">
