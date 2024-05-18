@@ -32,7 +32,7 @@ st.markdown("""
             font-family: "Graphik Semibold";
             font-size: 42px;
             background: linear-gradient(45deg, rgb(245, 58, 126) 30%, rgb(200, 1, 200) 55%, rgb(197, 45, 243) 20%);
-            background-size: 300% 200%;
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradientAnimation 7s ease-in-out infinite;
