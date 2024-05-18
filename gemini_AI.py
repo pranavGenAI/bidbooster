@@ -14,16 +14,10 @@ from langchain.chains import LLMChain
 
 st.set_page_config(page_title="BidBooster ", layout="wide")
 
-st.markdown("""
-## BidBooster 🤗💬: Answers your RFP related query.
+st.markdown("""<p style="font-family:Graphik; font-size: 42px; background: linear-gradient(45deg, #f53a7e 30%, #c801c8 55%, #c52df3 20%); -webkit-background-clip: text; color: transparent;">
+BidBooster: Simplifying Your Bid Process!.
+</p>""", unsafe_allow_html=True)
 
-### How It Works?
-
-Follow these simple steps to interact with the chatbot:
-1. **Upload the RFP document and click on submit & process** (Please note: the base LLM model is fine-tuned on LCBO ESG RFP documents. Results may vary for other documents).
-2. **Ask a Question:** Once the document is processed, ask any question related to its content for a precise answer.
-3. Ensure your **prompt is clear and complete** with some context for better result.
-""")
 #st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
 st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
 
@@ -147,4 +141,8 @@ def main():
 
 
 if __name__ == "__main__":
+    with open('C:/Users/pranav.baviskar/Desktop/Learning/GenAI/BidBooster/wave.css') as f:
+        css = f.read()
+        
+    st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
     main()
