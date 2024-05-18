@@ -14,9 +14,35 @@ from langchain.chains import LLMChain
 
 st.set_page_config(page_title="BidBooster ", layout="wide")
 
-st.markdown("""<p style="font-family:Graphik Semibold; font-size: 42px; background: linear-gradient(45deg, #f53a7e 30%, #c801c8 55%, #c52df3 20%); -webkit-background-clip: text; color: transparent;">
-BidBooster: Simplifying Your Bid Process!
-</p>""", unsafe_allow_html=True)
+st.markdown("""
+    <style>
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-gradient-text {
+            font-family: "Graphik Semibold";
+            font-size: 42px;
+            background: linear-gradient(45deg, rgb(245, 58, 126) 30%, rgb(200, 1, 200) 55%, rgb(197, 45, 243) 20%);
+            background-size: 300% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation 7s ease-in-out infinite;
+        }
+    </style>
+    <p class="animated-gradient-text">
+        BidBooster: Simplifying Your Bid Process!
+    </p>
+""", unsafe_allow_html=True)
+
 
 #st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
 st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
