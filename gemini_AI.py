@@ -86,7 +86,6 @@ def query_refiner(conversation, user_question):
     Given the following user query and conversation log, formulate a question that would be the most relevant to provide the user with an answer from a knowledge base.\n\nCONVERSATION LOG: \n{conversation}\n\nQuery: {user_question}\n\nRefined Query:"
 
     """
-    
     prompt = PromptTemplate(template=prompt, input_variables=["conversation","user_question"])
     print("Prompt is....",prompt)
     model = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3, google_api_key=api_key)
@@ -114,19 +113,11 @@ def main():
     user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
 
     if user_question and api_key:  # Ensure API key and user question are provided
-        user_input(user_question, api_key)
         if user_question:
             if st.button("Ask Question"):
-                with st.spinner("typing..."):
-                    conversation_string = get_conversation_string()
-                    # st.code(conversation_string)
-                    refined_query = query_refiner(conversation_string, user_question)
-                    st.markdown('<p class="small-font">---------------------------------------------------------------------------------------------------------------------</p>', unsafe_allow_html=True)
-                    
-                    st.markdown('<p class="small-font">Query Suggestion!!</p>', unsafe_allow_html=True)
-                    query_suggestion = "Your query suggestion here"
-                    st.markdown(f'<p class="small-font">{refined_query}</p>', unsafe_allow_html=True)
-                    #st.write(refined_query)
+                user_input(user_question, api_key)
+        
+
 
 
     with st.sidebar:
