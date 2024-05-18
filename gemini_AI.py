@@ -147,7 +147,7 @@ def main():
 
 
     with st.sidebar:
-        st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=120)
+        st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=180)
         st.markdown("")
         st.markdown("")
         
