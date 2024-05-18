@@ -141,7 +141,7 @@ if __name__ == "__main__":
         background-color: transparent;
     }
     .stApp {
-        background: linear-gradient(45deg, #1152bb 10%, #0E1117 45%, #0E1117 55%, #3a5683 90%);
+        background: linear-gradient(45deg, #0E1117 45%, #0E1117 55%, #3a5683 90%);
         animation: my_animation 20s ease infinite;
         background-size: 200% 200%;
         background-attachment: fixed;
@@ -168,9 +168,5 @@ if __name__ == "__main__":
         top:3px;
     }    
 
-    [data-testid=baseButton-secondary] {
-        color:#FFFFFF;
-        border: none;
-    }
     </style>''', unsafe_allow_html=True)
     main()
