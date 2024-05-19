@@ -98,7 +98,7 @@ def user_input(user_question, api_key):
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
-    speed = 5
+    speed = 10
     container = st.empty()
     tokens = response["output_text"].split()
     for index in range(len(tokens) + 1):
