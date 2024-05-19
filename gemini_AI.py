@@ -101,10 +101,10 @@ def user_input(user_question, api_key):
     speed = 5
     
     tokens = response["output_text"].split()
-        for index in range(len(tokens) + 1):
-            curr_full_text = " ".join(tokens[:index])
-            st.write("BidBooster: ", curr_full_text)
-            time.sleep(1 / speed)
+    for index in range(len(tokens) + 1):
+        curr_full_text = " ".join(tokens[:index])
+        st.write("BidBooster: ", curr_full_text)
+        time.sleep(1 / speed)
     
     #Sample Example
     
