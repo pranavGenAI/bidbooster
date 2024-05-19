@@ -103,7 +103,7 @@ def user_input(user_question, api_key):
     tokens = response["output_text"].split()
     for index in range(len(tokens) + 1):
         curr_full_text = " ".join(tokens[:index])
-        container.markdown("BidBooster: ", curr_full_text)
+        container.markdown(curr_full_text)
         time.sleep(1 / speed)
     
     #Sample Example
