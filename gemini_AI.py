@@ -99,11 +99,11 @@ def user_input(user_question, api_key):
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
     speed = 5
-    
+    container = st.empty()
     tokens = response["output_text"].split()
     for index in range(len(tokens) + 1):
         curr_full_text = " ".join(tokens[:index])
-        st.write("BidBooster: ", curr_full_text)
+        container.markdown("BidBooster: ", curr_full_text)
         time.sleep(1 / speed)
     
     #Sample Example
