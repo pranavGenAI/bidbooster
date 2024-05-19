@@ -11,6 +11,7 @@ from langchain.prompts import PromptTemplate
 import os
 from langchain_community.vectorstores import FAISS
 from langchain.chains import LLMChain
+import time
 
 st.set_page_config(page_title="BidBooster ", layout="wide")
 
@@ -97,7 +98,17 @@ def user_input(user_question, api_key):
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
-    st.write("BidBooster: ", response["output_text"])
+    speed = 10
+    
+    tokens = response["output_text"].split()
+        for index in range(len(tokens) + 1):
+            curr_full_text = " ".join(tokens[:index])
+            st.write("BidBooster: ", curr_full_text)
+            time.sleep(1 / speed)
+    
+    #Sample Example
+    
+    #st.write("BidBooster: ", response["output_text"])
 
 def get_conversation_string():
     conversation_string = ""
@@ -165,7 +176,7 @@ def main():
 if __name__ == "__main__":
     # with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
         # css = f.read()
-        
+
     st.markdown('''<style>
         .stApp > header {
         background-color: transparent;
