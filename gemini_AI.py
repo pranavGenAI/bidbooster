@@ -98,16 +98,16 @@ def user_input(user_question, api_key):
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
-    speed = 10
-    container = st.empty()
-    tokens = response["output_text"].split()
-    for index in range(len(tokens) + 1):
-        curr_full_text = " ".join(tokens[:index])
-        container.markdown(curr_full_text)
-        time.sleep(1 / speed)
+    # speed = 10
+    # container = st.empty()
+    # tokens = response["output_text"].split()
+    # for index in range(len(tokens) + 1):
+    #     curr_full_text = " ".join(tokens[:index])
+    #     container.markdown(curr_full_text)
+    #     time.sleep(1 / speed)
     
     #Sample Example
-    
+    st.write_stream("BidBooster: ", response["output_text"])
     #st.write("BidBooster: ", response["output_text"])
 
 def get_conversation_string():
