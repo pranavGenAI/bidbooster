@@ -107,7 +107,7 @@ def user_input(user_question, api_key):
     #     time.sleep(1 / speed)
     
     #Sample Example
-    print(response["output_text"])
+    print('response is here......',response["output_text"])
     st.write_stream("BidBooster: ", response["output_text"])
     #st.write("BidBooster: ", response["output_text"])
 
