@@ -143,15 +143,17 @@ st.markdown("""
     color: lightgrey !important;
 }
 
-input {
-  border-radius: 15px;
-}
-</style>
 """, unsafe_allow_html=True)
 
 def main():
     st.header("Chat with BidBooster")
-
+    st.markdown("""
+    <style>
+    input {
+      border-radius: 15px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
 
     if user_question and api_key:  # Ensure API key and user question are provided
