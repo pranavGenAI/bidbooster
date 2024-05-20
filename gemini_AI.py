@@ -142,6 +142,10 @@ st.markdown("""
     font-size:13px !important;
     color: lightgrey !important;
 }
+
+input {
+  border-radius: 5px;
+}
 </style>
 """, unsafe_allow_html=True)
 
