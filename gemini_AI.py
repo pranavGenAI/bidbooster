@@ -144,7 +144,7 @@ st.markdown("""
 }
 
 input {
-  border-radius: 5px;
+  border-radius: 15px;
 }
 </style>
 """, unsafe_allow_html=True)
