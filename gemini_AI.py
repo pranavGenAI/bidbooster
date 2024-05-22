@@ -29,7 +29,7 @@ st.markdown("""
             }
         }
 
-        .animated-gradient-text {
+        .animated-gradient-text_ {
             font-family: "Graphik Semibold";
             font-size: 42px;
             background: linear-gradient(45deg, rgb(245, 58, 126) 30%, rgb(200, 1, 200) 55%, rgb(197, 45, 243) 20%);
@@ -38,8 +38,32 @@ st.markdown("""
             -webkit-text-fill-color: transparent;
             animation: gradientAnimation 10s ease-in-out infinite;
         }
+        @keyframes animate_ {
+            0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
+                color: #0e3742;
+                text-shadow: none;
+                }
+            18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
+                color: #fff;
+                text-shadow: 0 0 10px rgb(197, 45, 243),
+                             0 0 20px rgb(197, 45, 243);
+                }
+            }
+        
+        .animated-gradient-text_ {
+                    font-family: "Graphik Semibold";
+                    font-size: 42px;
+                    color: #FFF;
+                    transition: color 0.5s, text-shadow 0.5s;
+                }
+
+        .animated-gradient-text_:hover {
+                    animation: animate_ 5s linear infinite;
+                }
+
+        
     </style>
-    <p class="animated-gradient-text">
+    <p class="animated-gradient-text_">
         BidBooster: Simplifying Your Bid Process!
     </p>
 """, unsafe_allow_html=True)
@@ -169,7 +193,38 @@ def main():
         st.markdown("")
         st.markdown("")
         
-        st.title("BidBooster 💬")
+        st.markdown("""
+            <style>
+                @keyframes animate {
+                    0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
+                        color: #0e3742;
+                        text-shadow: none;
+                    }
+                    18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
+                        color: #fff;
+                        text-shadow: 0 0 10px #03bcf4,
+                                    0 0 20px #03bcf4,
+                                    0 0 40px #03bcf4,
+                                    0 0 80px #03bcf4,
+                                    0 0 160px #03bcf4;
+                    }
+                }
+
+                .animated-gradient-text {
+                    font-family: "Graphik Semibold";
+                    font-size: 26px;
+                    color: #FFF;
+                    transition: color 0.5s, text-shadow 0.5s;
+                }
+
+                .animated-gradient-text:hover {
+                    animation: animate 5s linear infinite;
+                }
+
+            </style>
+            <p class = animated-gradient-text> BidBooster 💬 </p>    
+
+        """, unsafe_allow_html=True)
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
             with st.spinner("Processing..."):
