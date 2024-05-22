@@ -132,7 +132,7 @@ def user_input(user_question, api_key):
     
     #Sample Example
     print('response is here......',response["output_text"])
-    st.write_stream("BidBooster: ", response["output_text"])
+    st.write("BidBooster: ", response["output_text"])
     #st.write("BidBooster: ", response["output_text"])
 
 def get_conversation_string():
