@@ -270,16 +270,7 @@ if __name__ == "__main__":
         position:relative;
         top:3px;
     }    
-    .confirm_selection {
-    -webkit-transition: text-shadow 0.2s linear;
-    -moz-transition: text-shadow 0.2s linear;
-    -ms-transition: text-shadow 0.2s linear;
-    -o-transition: text-shadow 0.2s linear;
-    transition: text-shadow 0.2s linear;
-    }
-    .confirm_selection:hover {
-        text-shadow: 0 0 10px red; /* replace with whatever color you want */
-    }
+
 
     </style>''', unsafe_allow_html=True)
     main()
