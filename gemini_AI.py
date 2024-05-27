@@ -14,6 +14,58 @@ from langchain.chains import LLMChain
 import time
 
 st.set_page_config(page_title="BidBooster ", layout="wide")
+st.markdown("""
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Canvas</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #particle-canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particle-canvas"></div>
+    <!-- Ensure this path is correct and the file contains the ParticleNetwork definition -->
+    <script src="particle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if ParticleNetwork is defined
+            if (typeof ParticleNetwork !== 'undefined') {
+                var canvasDiv = document.getElementById('particle-canvas');
+                var options = {
+                    particleColor: '#888',
+                    interactive: true,
+                    speed: 'medium',
+                    density: 'high'
+                };
+                var particleCanvas = new ParticleNetwork(canvasDiv, options);
+            } else {
+                console.error('ParticleNetwork is not defined. Please check the script source.');
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+"""
+)
 
 st.markdown("""
     <style>
