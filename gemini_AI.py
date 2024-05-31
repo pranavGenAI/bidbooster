@@ -23,7 +23,7 @@ video_html = """
 		  bottom: 0;
 		  min-width: 100%; 
 		  min-height: 100%;
-		  filter: brightness(20%); /* Adjust the brightness to make the video darker */
+		  filter: brightness(10%); /* Adjust the brightness to make the video darker */
 		}
 		
 		.content {
@@ -36,7 +36,7 @@ video_html = """
 		}
 		</style>	
 		<video autoplay muted loop id="myVideo">
-		  <source src="https://assets.mixkit.co/videos/46392/46392-720.mp4" type="video/mp4">
+		  <source src="https://assets.mixkit.co/videos/4907/4907-720.mp4" type="video/mp4">
 		  Your browser does not support HTML5 video.
 		</video>
 		"""
