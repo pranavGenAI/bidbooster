@@ -13,7 +13,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import LLMChain
 import time
 
-st.set_page_config(page_title="BidBooster ", layout="wide")
+st.set_page_config(page_title="Bid Query Bot ", layout="wide")
 
 video_html = """
 		<style>
@@ -92,7 +92,7 @@ st.markdown("""
         
     </style>
     <p class="animated-gradient-text_">
-        BidBooster: Simplifying Your Bid Process!
+        Bid Query Bot: Simplifying Your Bid Process!
     </p>
 """, unsafe_allow_html=True)
 
@@ -160,7 +160,7 @@ def user_input(user_question, api_key):
     
     #Sample Example
     print('response is here......',response["output_text"])
-    st.write("BidBooster: ", response["output_text"])
+    st.write("Bid Query Bot: ", response["output_text"])
     #st.write("BidBooster: ", response["output_text"])
 
 def get_conversation_string():
@@ -198,7 +198,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
-    st.header("Chat with BidBooster")
+    st.header("Chat with Bid Query Bot")
     st.markdown("""
     <style>
     input {
@@ -250,7 +250,7 @@ def main():
                 }
 
             </style>
-            <p class = animated-gradient-text> BidBooster 💬 </p>    
+            <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
 
         """, unsafe_allow_html=True)
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
