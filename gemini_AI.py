@@ -36,7 +36,7 @@ video_html = """
 		}
 		</style>	
 		<video autoplay muted loop id="myVideo">
-		  <source src="https://assets.mixkit.co/videos/47285/47285-720.mp4" type="video/mp4">
+		  <source src="https://assets.mixkit.co/videos/14157/14157-720.mp4" type="video/mp4">
 		  Your browser does not support HTML5 video.
 		</video>
 		"""
