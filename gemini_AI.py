@@ -23,7 +23,7 @@ video_html = """
 		  bottom: 0;
 		  min-width: 100%; 
 		  min-height: 100%;
-		  filter: brightness(100%); /* Adjust the brightness to make the video darker */
+		  filter: brightness(60%); /* Adjust the brightness to make the video darker */
 		}
 		
 		.content {
