@@ -29,7 +29,7 @@ video_html = """
 		.content {
 		  position: fixed;
 		  bottom: 0;
-		  background: rgba(0, 0, 0, 0.3); /* Adjust the transparency as needed */
+		  background: rgba(0, 0, 0, 0.8); /* Adjust the transparency as needed */
 		  color: #f1f1f1;
 		  width: 100%;
 		  padding: 20px;
