@@ -12,6 +12,7 @@ import os
 from langchain_community.vectorstores import FAISS
 from langchain.chains import LLMChain
 import time
+import hashlib
 
 st.set_page_config(page_title="Bid Query Bot ", layout="wide")
 
@@ -40,6 +41,8 @@ video_html = """
 		  Your browser does not support HTML5 video.
 		</video>
 		"""
+
+
 
 st.markdown(video_html, unsafe_allow_html=True)
 
@@ -110,6 +113,38 @@ if 'responses' not in st.session_state:
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
+
+# Helper function to hash passwords
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+# Define users and hashed passwords for simplicity
+users = {
+    "tomas": hash_password("tomas123"),
+    "admin": hash_password("admin")
+}
+
+def login():
+    st.title("Login")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        hashed_password = hash_password(password)
+        if username in users and users[username] == hashed_password:
+            st.session_state.logged_in = True
+            st.session_state.username = username
+            st.success("Logged in successfully!")
+            st.experimental_rerun()  # Refresh to show logged-in state
+        else:
+            st.error("Invalid username or password")
+		
+def logout():
+    st.session_state.logged_in = False
+    del st.session_state.username  # Remove username from session state
+    st.success("Logged out successfully!")
+    st.experimental_rerun()  # Refresh to show logged-out state
 
 def get_pdf_text(pdf_docs):
     text = ""
@@ -198,69 +233,80 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
-    st.header("Chat with Bid Query Bot")
-    st.markdown("""
-    <style>
-    input {
-      border-radius: 15px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+    
+    if "username" not in st.session_state:
+        st.session_state.username = ""
 
-    if user_question and api_key:  # Ensure API key and user question are provided
-        if user_question:
-            if st.button("Ask Question"):
-                user_input(user_question, api_key)
-        
-
-
-
-    with st.sidebar:
-        st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=150)
-        st.markdown("")
-        st.markdown("")
-        
+    if st.session_state.logged_in:
+        if st.sidebar.button("Logout"):
+            logout()
+######## REST OF THE CODE ######################
+        st.header("Chat with Bid Query Bot")
         st.markdown("""
-            <style>
-                @keyframes animate {
-                    0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
-                        color: #0e3742;
-                        text-shadow: none;
-                    }
-                    18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
-                        color: #fff;
-                        text-shadow: 0 0 10px #03bcf4,
-                                    0 0 20px #03bcf4,
-                                    0 0 40px #03bcf4,
-                                    0 0 80px #03bcf4,
-                                    0 0 160px #03bcf4;
-                    }
-                }
-
-                .animated-gradient-text {
-                    font-family: "Graphik Semibold";
-                    font-size: 26px;
-                    color: #FFF;
-                    transition: color 0.5s, text-shadow 0.5s;
-                }
-
-                .animated-gradient-text:hover {
-                    animation: animate 5s linear infinite;
-                }
-
-            </style>
-            <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
-
+        <style>
+        input {
+        border-radius: 15px;
+        }
+        </style>
         """, unsafe_allow_html=True)
-        pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
-        if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
-            with st.spinner("Processing..."):
-                raw_text = get_pdf_text(pdf_docs)
+        user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
+
+        if user_question and api_key:  # Ensure API key and user question are provided
+            if user_question:
+                if st.button("Ask Question"):
+                    user_input(user_question, api_key)
+
+        with st.sidebar:
+            st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=150)
+            st.markdown("")
+            st.markdown("")
+            
+            st.markdown("""
+                <style>
+                    @keyframes animate {
+                        0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
+                            color: #0e3742;
+                            text-shadow: none;
+                        }
+                        18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
+                            color: #fff;
+                            text-shadow: 0 0 10px #03bcf4,
+                                        0 0 20px #03bcf4,
+                                        0 0 40px #03bcf4,
+                                        0 0 80px #03bcf4,
+                                        0 0 160px #03bcf4;
+                        }
+                    }
+
+                    .animated-gradient-text {
+                        font-family: "Graphik Semibold";
+                        font-size: 26px;
+                        color: #FFF;
+                        transition: color 0.5s, text-shadow 0.5s;
+                    }
+
+                    .animated-gradient-text:hover {
+                        animation: animate 5s linear infinite;
+                    }
+
+                </style>
+                <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
+
+            """, unsafe_allow_html=True)
+            pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
+            if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
+                with st.spinner("Processing..."):
+                    raw_text = get_pdf_text(pdf_docs)
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
       #  st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
+
+
+    else:
+        login()
 
 
 if __name__ == "__main__":
