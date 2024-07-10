@@ -126,10 +126,11 @@ users = {
 
 def login():
     st.title("Login")
-
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-
+    col1,col2,col3 = [1,1,1]
+    with col1:
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+	    
     if st.button("Login"):
         hashed_password = hash_password(password)
         if username in users and users[username] == hashed_password:
