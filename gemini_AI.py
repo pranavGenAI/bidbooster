@@ -128,10 +128,10 @@ def login():
     
     col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
     with col2:  # Center the input fields in the middle column
-	st.title("Login")
+        st.title("Login")
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
-        
+	    
         if st.button("Login"):
             hashed_password = hash_password(password)
             if username in users and users[username] == hashed_password:
