@@ -14,6 +14,6 @@ if st.button("Log in", type="primary"):
         st.session_state.logged_in = True
         st.success("Logged in successfully!")
         sleep(0.5)
-        st.switch_page("page1.py")
+        st.switch_page("gemini_AI.py")
     else:
         st.error("Incorrect username or password")
