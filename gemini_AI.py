@@ -126,20 +126,20 @@ users = {
 
 def login():
     st.title("Login")
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col2:
+    col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
+    with col2:  # Center the input fields in the middle column
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
-	    
-    if st.button("Login"):
-        hashed_password = hash_password(password)
-        if username in users and users[username] == hashed_password:
-            st.session_state.logged_in = True
-            st.session_state.username = username
-            st.success("Logged in successfully!")
-            st.experimental_rerun()  # Refresh to show logged-in state
-        else:
-            st.error("Invalid username or password")
+        
+        if st.button("Login"):
+            hashed_password = hash_password(password)
+            if username in users and users[username] == hashed_password:
+                st.session_state.logged_in = True
+                st.session_state.username = username
+                st.success("Logged in successfully!")
+                st.experimental_rerun()  # Refresh to show logged-in state
+            else:
+                st.error("Invalid username or password")
 		
 def logout():
     st.session_state.logged_in = False
