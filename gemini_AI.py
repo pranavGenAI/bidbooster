@@ -106,7 +106,7 @@ st.markdown("""
 
 # This is the first API key input; no need to repeat it in the main function.
 api_key = st.secrets['GEMINI_API_KEY']
-
+#api_key = 'AIzaSyCiPGxwD04JwxifewrYiqzufyd25VjKBkw'
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
 
@@ -233,80 +233,70 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
-    if "logged_in" not in st.session_state:
-        st.session_state.logged_in = False
-    
-    if "username" not in st.session_state:
-        st.session_state.username = ""
 
-    if st.session_state.logged_in:
-        if st.sidebar.button("Logout"):
-            logout()
-######## REST OF THE CODE ######################
-        st.header("Chat with Bid Query Bot")
+    st.header("Chat with Bid Query Bot")
+    st.markdown("""
+    <style>
+    input {
+      border-radius: 15px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
+
+    if user_question and api_key:  # Ensure API key and user question are provided
+        if user_question:
+            if st.button("Ask Question"):
+                user_input(user_question, api_key)
+        
+
+
+
+    with st.sidebar:
+        st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=150)
+        st.markdown("")
+        st.markdown("")
+        
         st.markdown("""
-        <style>
-        input {
-        border-radius: 15px;
-        }
-        </style>
+            <style>
+                @keyframes animate {
+                    0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
+                        color: #0e3742;
+                        text-shadow: none;
+                    }
+                    18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
+                        color: #fff;
+                        text-shadow: 0 0 10px #03bcf4,
+                                    0 0 20px #03bcf4,
+                                    0 0 40px #03bcf4,
+                                    0 0 80px #03bcf4,
+                                    0 0 160px #03bcf4;
+                    }
+                }
+
+                .animated-gradient-text {
+                    font-family: "Graphik Semibold";
+                    font-size: 26px;
+                    color: #FFF;
+                    transition: color 0.5s, text-shadow 0.5s;
+                }
+
+                .animated-gradient-text:hover {
+                    animation: animate 5s linear infinite;
+                }
+
+            </style>
+            <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
+
         """, unsafe_allow_html=True)
-        user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
-
-        if user_question and api_key:  # Ensure API key and user question are provided
-            if user_question:
-                if st.button("Ask Question"):
-                    user_input(user_question, api_key)
-
-        with st.sidebar:
-            st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=150)
-            st.markdown("")
-            st.markdown("")
-            
-            st.markdown("""
-                <style>
-                    @keyframes animate {
-                        0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
-                            color: #0e3742;
-                            text-shadow: none;
-                        }
-                        18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
-                            color: #fff;
-                            text-shadow: 0 0 10px #03bcf4,
-                                        0 0 20px #03bcf4,
-                                        0 0 40px #03bcf4,
-                                        0 0 80px #03bcf4,
-                                        0 0 160px #03bcf4;
-                        }
-                    }
-
-                    .animated-gradient-text {
-                        font-family: "Graphik Semibold";
-                        font-size: 26px;
-                        color: #FFF;
-                        transition: color 0.5s, text-shadow 0.5s;
-                    }
-
-                    .animated-gradient-text:hover {
-                        animation: animate 5s linear infinite;
-                    }
-
-                </style>
-                <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
-
-            """, unsafe_allow_html=True)
-            pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
-            if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
-                with st.spinner("Processing..."):
-                    raw_text = get_pdf_text(pdf_docs)
+        pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
+        if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
+            with st.spinner("Processing..."):
+                raw_text = get_pdf_text(pdf_docs)
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
       #  st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
-
-
-    else:
-        login()
 
 
 if __name__ == "__main__":
@@ -347,4 +337,18 @@ if __name__ == "__main__":
 
 
     </style>''', unsafe_allow_html=True)
-    main()
+
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+    
+    if "username" not in st.session_state:
+        st.session_state.username = ""
+
+    if st.session_state.logged_in:
+        if st.sidebar.button("Logout"):
+            logout()
+        main()
+        
+    else:
+        login()
+
