@@ -132,13 +132,13 @@ TOKEN_FILE = "./data/token_counts.json"
 
 def read_token_counts():
     try:
-        with open("token_counts.json", "r") as f:
+        with open("./data/token_counts.json", "r") as f:
             return json.load(f)
     except FileNotFoundError:
         return {}
 
 def write_token_counts(token_counts):
-    with open("token_counts.json", "w") as f:
+    with open("./data/token_counts.json", "w") as f:
         json.dump(token_counts, f)
 
 
