@@ -13,6 +13,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import LLMChain
 import time
 import hashlib
+import json
 
 st.set_page_config(page_title="Bid Query Bot ", layout="wide")
 
@@ -105,8 +106,8 @@ st.markdown("""
 
 
 # This is the first API key input; no need to repeat it in the main function.
-api_key = st.secrets['GEMINI_API_KEY']
-#api_key = 'AIzaSyCiPGxwD04JwxifewrYiqzufyd25VjKBkw'
+#api_key = st.secrets['GEMINI_API_KEY']
+api_key = 'AIzaSyCiPGxwD04JwxifewrYiqzufyd25VjKBkw'
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
 
@@ -118,33 +119,71 @@ if 'requests' not in st.session_state:
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
+
 # Define users and hashed passwords for simplicity
 users = {
     "tomas": hash_password("tomas123"),
     "admin": hash_password("admin")
 }
 
+
+TOKEN_FILE = "token_counts.json"
+
+
+def read_token_counts():
+    try:
+        with open("token_counts.json", "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+def write_token_counts(token_counts):
+    with open("token_counts.json", "w") as f:
+        json.dump(token_counts, f)
+
+
+def get_token_count(username):
+    token_counts = read_token_counts()
+    return token_counts.get(username, 1000)  # Default to 1000 tokens if not found
+
+def update_token_count(username, count):
+    token_counts = read_token_counts()
+    token_counts[username] = count
+    write_token_counts(token_counts)
+
+
 def login():
-    
+    st.title("Login")
     col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
     with col2:  # Center the input fields in the middle column
-        st.title("Login")
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
-	    
+        
         if st.button("Sign in"):
             hashed_password = hash_password(password)
             if username in users and users[username] == hashed_password:
-                st.session_state.logged_in = True
-                st.session_state.username = username
-                st.success("Logged in successfully!")
-                st.experimental_rerun()  # Refresh to show logged-in state
+                token_counts = read_token_counts()
+                tokens_remaining = token_counts.get(username, 500)  # Default to 500 tokens if not found
+                
+                if tokens_remaining > 0:
+                    st.session_state.logged_in = True
+                    st.session_state.username = username
+                    st.session_state.tokens_remaining = tokens_remaining
+                    st.session_state.tokens_consumed = 0
+                    st.success("Logged in successfully!")
+                    st.experimental_rerun()  # Refresh to show logged-in state
+                else:
+                    st.error("No tokens remaining. Please contact support.")
             else:
                 st.error("Invalid username or password")
-		
+
+
 def logout():
+    # Clear session state on logout
     st.session_state.logged_in = False
-    del st.session_state.username  # Remove username from session state
+    del st.session_state.username
+    del st.session_state.tokens_remaining
+    del st.session_state.tokens_consumed
     st.success("Logged out successfully!")
     st.experimental_rerun()  # Refresh to show logged-out state
 
@@ -181,24 +220,38 @@ def get_conversational_chain():
     return chain
 
 def user_input(user_question, api_key):
+    # Embeddings and vector store initialization omitted for brevity
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key)
-    #new_db = FAISS.load_local("faiss_index", embeddings)
-    new_db = FAISS.load_local("faiss_index", embeddings,allow_dangerous_deserialization=True)
+    new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+    
+    # Perform similarity search and get response
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
-    # speed = 10
-    # container = st.empty()
-    # tokens = response["output_text"].split()
-    # for index in range(len(tokens) + 1):
-    #     curr_full_text = " ".join(tokens[:index])
-    #     container.markdown(curr_full_text)
-    #     time.sleep(1 / speed)
     
-    #Sample Example
-    print('response is here......',response["output_text"])
-    st.write("Bid Query Bot: ", response["output_text"])
-    #st.write("BidBooster: ", response["output_text"])
+    # Calculate number of words in the response
+    num_words = len(response["output_text"].split())
+
+    # Deduct tokens based on number of words
+    token_cost = num_words  # Each word in the response costs 1 token (adjust as needed)
+    
+    # Check if enough tokens are available
+    if st.session_state.tokens_remaining > 0:
+        # Proceed with displaying the response and deducting tokens
+        st.write("Bid Query Bot: ", response["output_text"])
+        st.session_state.tokens_consumed += token_cost  # Deduct tokens based on response length
+        st.session_state.tokens_remaining -= token_cost
+
+        # Update token count in JSON file
+        token_counts = read_token_counts()
+        token_counts[st.session_state.username] = st.session_state.tokens_remaining
+        write_token_counts(token_counts)
+    else:
+        st.warning("You don't have enough tokens. Please contact your administrator.")
+
+    # Display remaining tokens to the user
+    st.sidebar.text(f"Tokens Remaining: {st.session_state.tokens_remaining}")
+
 
 def get_conversation_string():
     conversation_string = ""
@@ -340,17 +393,20 @@ if __name__ == "__main__":
 
     </style>''', unsafe_allow_html=True)
 
+    # Ensure session state variables are initialized
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
+    if "tokens_consumed" not in st.session_state:
+        st.session_state.tokens_consumed = 0
+    if "tokens_remaining" not in st.session_state:
+        st.session_state.tokens_remaining = 0
     
-    if "username" not in st.session_state:
-        st.session_state.username = ""
-
     if st.session_state.logged_in:
+        st.sidebar.write(f"Welcome, {st.session_state.username}")
+        st.sidebar.write(f"Tokens remaining: {st.session_state.tokens_remaining}")
         if st.sidebar.button("Logout"):
             logout()
         main()
-        
     else:
         login()
 
