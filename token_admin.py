@@ -8,12 +8,17 @@ def read_token_counts(file_path):
         with open(file_path, "r") as f:
             return json.load(f)
     except FileNotFoundError:
+        st.warning(f"File not found: {file_path}")
         return {}
 
 # Function to write the token counts to a JSON file
 def write_token_counts(file_path, token_counts):
-    with open(file_path, "w") as f:
-        json.dump(token_counts, f, indent=4)
+    try:
+        with open(file_path, "w") as f:
+            json.dump(token_counts, f, indent=4)
+        st.success(f"Changes saved to {file_path}")
+    except Exception as e:
+        st.error(f"Error saving changes to {file_path}: {e}")
 
 def admin_app():
     st.title("Admin Panel for Token Management")
@@ -42,7 +47,6 @@ def admin_app():
 
             if st.button("Save Changes"):
                 write_token_counts(selected_file_path, token_counts)
-                st.success("Token counts updated successfully")
     else:
         st.warning("No JSON files found in the data directory. Please upload JSON files to manage tokens.")
 
