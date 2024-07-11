@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 import os
+import shutil
 
 # Function to read the token counts from a JSON file
 def read_token_counts(file_path):
@@ -11,14 +12,21 @@ def read_token_counts(file_path):
         st.warning(f"File not found: {file_path}")
         return {}
 
-# Function to write the token counts to a JSON file
-def write_token_counts(file_path, token_counts):
+# Function to replace the token counts JSON file
+def replace_token_counts(file_path, new_data):
     try:
-        with open(file_path, "w") as f:
-            json.dump(token_counts, f, indent=4)
-        st.success(f"Changes saved to {file_path}")
+        temp_file_path = file_path + ".temp"  # Temporary file path
+
+        # Write updated data to a temporary file
+        with open(temp_file_path, "w") as f:
+            json.dump(new_data, f, indent=4)
+
+        # Replace the original file with the temporary file
+        shutil.move(temp_file_path, file_path)
+
+        st.success(f"File replaced: {file_path}")
     except Exception as e:
-        st.error(f"Error saving changes to {file_path}: {e}")
+        st.error(f"Error replacing file: {e}")
 
 def admin_app():
     st.title("Admin Panel for Token Management")
@@ -46,7 +54,7 @@ def admin_app():
                 token_counts[user] = new_token_limit
 
             if st.button("Save Changes"):
-                write_token_counts(selected_file_path, token_counts)
+                replace_token_counts(selected_file_path, token_counts)
     else:
         st.warning("No JSON files found in the data directory. Please upload JSON files to manage tokens.")
 
