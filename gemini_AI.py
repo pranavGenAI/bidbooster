@@ -127,7 +127,7 @@ users = {
 }
 
 
-TOKEN_FILE = "token_counts.json"
+TOKEN_FILE = "./data/token_counts.json"
 
 
 def read_token_counts():
