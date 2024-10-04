@@ -217,11 +217,9 @@ def get_vector_store(text_chunks, api_key):
     vector_store.save_local("faiss_index")
 
 def get_conversational_chain():
-    prompt_template = """
-    Answer the question as detailed as possible from the provided context. Change the wording of answer and start in the most polite way. Write the summary of answer and then provide the detail answer. Start with polite and nice statement. You can use greetings if you want. Don't provide the wrong answer. If you are giving answer and not using context to frame the answer then let the user know that the answer is not from the context.\n\n. And remember to format your answer in nicer way. End your response with disclaimer telling about the answer is from the context. Remember to be polite and start answer with assistant greetings. 
+    prompt_template = """Answer the user question based on the context provided.
     Context:\n {context}?\n
-    Question: \n{question}\n . Make sure you are summarizing before you write answer in easy to understand language and format it in easy to read way. Provide the disclaimer in best possible way at the of question saying the answer is based on the context and accuracy needs to be checked from the source. If you don't know the answer and user is asking for your opinion then provide it based on your knowledge and put that in disclaimer as well.
-
+    Question: \n{question}\n .
     Answer:
     """
     model = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3, google_api_key=api_key)
