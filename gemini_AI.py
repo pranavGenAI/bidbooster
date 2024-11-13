@@ -120,7 +120,7 @@ def hash_password(password):
 
 # Define users and hashed passwords for simplicity
 users = {
-    "tomas": hash_password("tomas123"),
+    "user": hash_password("user"),
     "admin": hash_password("admin")
 }
 
