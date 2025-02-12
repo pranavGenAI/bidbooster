@@ -220,32 +220,6 @@ def update_token_count(username, count):
 #     </style>
 # """, unsafe_allow_html=True)
 
-st.markdown("""
-    <style>
-        /* Make the entire label container transparent */
-        label[data-testid="stWidgetLabel"] {
-            background-color: transparent !important;
-        }
-
-        /* Target the inner div inside the label */
-        label[data-testid="stWidgetLabel"] div[data-testid="stMarkdownContainer"] {
-            background-color: transparent !important;
-        }
-
-        /* Make the text inside transparent background */
-        label[data-testid="stWidgetLabel"] p {
-            background-color: transparent !important;
-            
-        }
-
-        /* Change the input box background to white */
-        div[data-baseweb="input"] > div {
-            background-color: white !important;
-            border-radius: 5px !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 def login():
     col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
     with col2:  # Center the input fields in the middle column
@@ -384,15 +358,33 @@ def query_refiner(conversation, user_question):
     return response
 
 def main():
-
     st.header("Chat with Bid Query Bot")
     st.markdown("""
     <style>
-    input {
-      border-radius: 15px;
-    }
+        /* Make the entire label container transparent */
+        label[data-testid="stWidgetLabel"] {
+            background-color: transparent !important;
+        }
+
+        /* Target the inner div inside the label */
+        label[data-testid="stWidgetLabel"] div[data-testid="stMarkdownContainer"] {
+            background-color: transparent !important;
+        }
+
+        /* Make the text inside transparent background */
+        label[data-testid="stWidgetLabel"] p {
+            background-color: transparent !important;
+            
+        }
+
+        /* Change the input box background to white */
+        div[data-baseweb="input"] > div {
+            background-color: white !important;
+            border-radius: 5px !important;
+        }
     </style>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
+
     user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
 
     if user_question and api_key:  # Ensure API key and user question are provided
@@ -400,32 +392,11 @@ def main():
             if st.button("Ask Question"):
                 user_input(user_question, api_key)
         
-
-
-
     with st.sidebar:
         st.image("https://www.clutch.com/wp-content/uploads/2018/04/Accenture-logo-no-background.png", width=150)
         st.markdown("")
         st.markdown("")
         
-        # st.markdown("""
-        #     <style>
-
-        #         # .animated-gradient-text {
-        #         #     font-family: "Graphik Semibold";
-        #         #     font-size: 26px;
-        #         #     color: #FFFF;
-        #         #     # transition: color 0.5s, text-shadow 0.5s;
-        #         # }
-
-        #         # .animated-gradient-text:hover {
-        #         #     animation: animate 5s linear infinite;
-        #         # }
-
-        #     </style>
-        #     <p> Bid Query Bot </p>    
-
-        # """, unsafe_allow_html=True)
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
             with st.spinner("Processing..."):
@@ -433,8 +404,6 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-      #  st.image("https://media.tenor.com/s1Y9XfdN08EAAAAi/bot.gif", width=200)
-
 
 if __name__ == "__main__":
     # with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
