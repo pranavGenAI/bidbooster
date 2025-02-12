@@ -76,7 +76,7 @@ st.markdown("""
         }
     </style>
     <h2>
-        Bid Response Evaluation AI: Evaluates Bid responses!
+        Bid Query Bot!
     </h2>
 """, unsafe_allow_html=True)
 
