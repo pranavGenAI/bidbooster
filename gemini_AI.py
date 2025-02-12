@@ -379,8 +379,7 @@ def main():
         label[data-testid="stWidgetLabel"] p {
             background: none !important;
             background-color: transparent !important;
-            color: white !important; /* Optional: Keep text visible */
-            font-weight: bold !important; /* Optional */
+
         }
 
         /* Change the input box background to white */
