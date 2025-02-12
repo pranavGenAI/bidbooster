@@ -365,8 +365,6 @@ def main():
         label[data-testid="stWidgetLabel"] {
             background: none !important;
             background-color: transparent !important;
-            color: white !important; /* Optional: Change text color */
-            font-weight: bold !important; /* Optional: Make text bold */
         }
 
         /* Target the inner div container */
