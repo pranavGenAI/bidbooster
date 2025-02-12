@@ -205,11 +205,37 @@ def update_token_count(username, count):
     write_token_counts(token_counts)
 
 
+# st.markdown("""
+#     <style>
+#         /* Make the label background transparent */
+#         label[for="user_question"] {
+#             background-color: transparent !important;
+#         }
+
+#         /* Change the input box background to white */
+#         div[data-baseweb="input"] > div {
+#             background-color: white !important;
+#             border-radius: 5px !important;
+#         }
+#     </style>
+# """, unsafe_allow_html=True)
+
 st.markdown("""
     <style>
-        /* Make the label background transparent */
-        label[for="user_question"] {
+        /* Make the entire label container transparent */
+        label[data-testid="stWidgetLabel"] {
             background-color: transparent !important;
+        }
+
+        /* Target the inner div inside the label */
+        label[data-testid="stWidgetLabel"] div[data-testid="stMarkdownContainer"] {
+            background-color: transparent !important;
+        }
+
+        /* Make the text inside transparent background */
+        label[data-testid="stWidgetLabel"] p {
+            background-color: transparent !important;
+            
         }
 
         /* Change the input box background to white */
