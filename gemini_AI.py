@@ -17,33 +17,119 @@ import json
 
 st.set_page_config(page_title="Bid Query Bot ", layout="wide")
 
-video_html = """
-		<style>
-		#myVideo {
-		  position: fixed;
-		  right: 0;
-		  bottom: 0;
-		  min-width: 100%; 
-		  min-height: 100%;
-		  filter: brightness(25%); /* Adjust the brightness to make the video darker */
-		}
+# video_html = """
+# 		<style>
+# 		#myVideo {
+# 		  position: fixed;
+# 		  right: 0;
+# 		  bottom: 0;
+# 		  min-width: 100%; 
+# 		  min-height: 100%;
+# 		  filter: brightness(25%); /* Adjust the brightness to make the video darker */
+# 		}
 		
-		.content {
-		  position: fixed;
-		  bottom: 0;
-		  background: rgba(0, 0, 0, 0.2); /* Adjust the transparency as needed */
-		  color: #f1f1f1;
-		  width: 100%;
-		  padding: 20px;
-		}
-		</style>	
-		<video autoplay muted loop id="myVideo">
-		  <source src="https://assets.mixkit.co/videos/4907/4907-720.mp4" type="video/mp4">
-		  Your browser does not support HTML5 video.
-		</video>
-		"""
+# 		.content {
+# 		  position: fixed;
+# 		  bottom: 0;
+# 		  background: rgba(0, 0, 0, 0.2); /* Adjust the transparency as needed */
+# 		  color: #f1f1f1;
+# 		  width: 100%;
+# 		  padding: 20px;
+# 		}
+# 		</style>	
+# 		<video autoplay muted loop id="myVideo">
+# 		  <source src="https://assets.mixkit.co/videos/4907/4907-720.mp4" type="video/mp4">
+# 		  Your browser does not support HTML5 video.
+# 		</video>
+# 		"""
 
-st.markdown(video_html, unsafe_allow_html=True)
+# st.markdown(video_html, unsafe_allow_html=True)
+
+# st.markdown("""
+#     <style>
+#         @keyframes gradientAnimation {
+#             0% {
+#                 background-position: 0% 50%;
+#             }
+#             50% {
+#                 background-position: 100% 50%;
+#             }
+#             100% {
+#                 background-position: 0% 50%;
+#             }
+#         }
+
+#         .animated-gradient-text_ {
+#             font-family: "Graphik Semibold";
+#             font-size: 42px;
+#             background: linear-gradient(45deg, rgb(245, 58, 126) 30%, rgb(200, 1, 200) 55%, rgb(197, 45, 243) 20%);
+#             background-size: 300% 200%;
+#             -webkit-background-clip: text;
+#             -webkit-text-fill-color: transparent;
+#             animation: gradientAnimation 10s ease-in-out infinite;
+#         }
+#         @keyframes animate_ {
+#             0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
+#                 color: #0e3742;
+#                 text-shadow: none;
+#                 }
+#             18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
+#                 color: #fff;
+#                 text-shadow: 0 0 10px rgb(197, 45, 243),
+#                              0 0 20px rgb(197, 45, 243);
+#                 }
+#             }
+        
+#         .animated-gradient-text_ {
+#                     font-family: "Graphik Semibold";
+#                     font-size: 42px;
+#                     color: #FFF;
+#                     transition: color 0.5s, text-shadow 0.5s;
+#                 }
+
+#         .animated-gradient-text_:hover {
+#                     animation: animate_ 5s linear infinite;
+#                 }
+
+        
+#     </style>
+#     <p class="animated-gradient-text_">
+#         Bid Query Bot: Simplifying Your Bid Process!
+#     </p>
+# """, unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    .stButton button {
+        background: linear-gradient(120deg,#FF007F, #A020F0 100%) !important;
+        color: white !important;
+    }
+    body {
+        color: white;
+        background-color: #1E1E1E;
+    }
+    .stTextInput, .stSelectbox, .stTextArea, .stFileUploader {
+        color: white;
+        background-color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown("""
+<style>
+    iframe {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: none;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown("""
     <style>
@@ -59,46 +145,20 @@ st.markdown("""
             }
         }
 
-        .animated-gradient-text_ {
+        .animated-gradient-text {
             font-family: "Graphik Semibold";
             font-size: 42px;
-            background: linear-gradient(45deg, rgb(245, 58, 126) 30%, rgb(200, 1, 200) 55%, rgb(197, 45, 243) 20%);
+            background: linear-gradient(45deg, #22ebe8 30%, #dc14b7 55%, #fe647b 20%);
             background-size: 300% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientAnimation 10s ease-in-out infinite;
+            animation: gradientAnimation 20s ease-in-out infinite;
         }
-        @keyframes animate_ {
-            0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
-                color: #0e3742;
-                text-shadow: none;
-                }
-            18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
-                color: #fff;
-                text-shadow: 0 0 10px rgb(197, 45, 243),
-                             0 0 20px rgb(197, 45, 243);
-                }
-            }
-        
-        .animated-gradient-text_ {
-                    font-family: "Graphik Semibold";
-                    font-size: 42px;
-                    color: #FFF;
-                    transition: color 0.5s, text-shadow 0.5s;
-                }
-
-        .animated-gradient-text_:hover {
-                    animation: animate_ 5s linear infinite;
-                }
-
-        
     </style>
-    <p class="animated-gradient-text_">
-        Bid Query Bot: Simplifying Your Bid Process!
-    </p>
+    <h2>
+        Bid Response Evaluation AI: Evaluates Bid responses!
+    </h2>
 """, unsafe_allow_html=True)
-
-
 #st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
 # st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
 
@@ -367,40 +427,40 @@ if __name__ == "__main__":
     # with open('https://github.com/pranavGenAI/bidbooster/blob/475ae18b3c1f5a05a45ff983e06b025943137576/wave.css') as f:
         # css = f.read()
 
-    st.markdown('''<style>
-        .stApp > header {
-        background-color: transparent;
-    }
-    .stApp {
-        background: linear-gradient(45deg, #0a1621 20%, #0E1117 45%, #0E1117 55%, #3a5683 90%);
-        animation: my_animation 20s ease infinite;
-        background-size: 200% 200%;
-        background-attachment: fixed;
-    }
-    @keyframes my_animation {
-        0% {background-position: 0% 0%;}
-        50% {background-position: 100% 100%;}
-        100% {background-position: 0% 0%;}
-    }
-    [data-testid=stSidebar] {
-        background: linear-gradient(360deg, #1a2631 95%, #161d29 10%);
-    }
-    div.stButton > button:first-child {
-        background:linear-gradient(45deg, #c9024b 45%, #ba0158 55%, #cd006d 70%);
-        color: white;
-        border: none;
-    }
-    div.stButton > button:hover {
-        background:linear-gradient(45deg, #ce026f 45%, #970e79 55%, #6c028d 70%);
-        background-color:#ce1126;
-    }
-    div.stButton > button:active {
-        position:relative;
-        top:3px;
-    }    
+    # st.markdown('''<style>
+    #     .stApp > header {
+    #     background-color: transparent;
+    # }
+    # .stApp {
+    #     background: linear-gradient(45deg, #0a1621 20%, #0E1117 45%, #0E1117 55%, #3a5683 90%);
+    #     animation: my_animation 20s ease infinite;
+    #     background-size: 200% 200%;
+    #     background-attachment: fixed;
+    # }
+    # @keyframes my_animation {
+    #     0% {background-position: 0% 0%;}
+    #     50% {background-position: 100% 100%;}
+    #     100% {background-position: 0% 0%;}
+    # }
+    # [data-testid=stSidebar] {
+    #     background: linear-gradient(360deg, #1a2631 95%, #161d29 10%);
+    # }
+    # div.stButton > button:first-child {
+    #     background:linear-gradient(45deg, #c9024b 45%, #ba0158 55%, #cd006d 70%);
+    #     color: white;
+    #     border: none;
+    # }
+    # div.stButton > button:hover {
+    #     background:linear-gradient(45deg, #ce026f 45%, #970e79 55%, #6c028d 70%);
+    #     background-color:#ce1126;
+    # }
+    # div.stButton > button:active {
+    #     position:relative;
+    #     top:3px;
+    # }    
 
 
-    </style>''', unsafe_allow_html=True)
+    # </style>''', unsafe_allow_html=True)
 
     # Ensure session state variables are initialized
     if "logged_in" not in st.session_state:
@@ -418,3 +478,75 @@ if __name__ == "__main__":
         main()
     else:
         login()
+
+
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Graphik:wght@400;700&display=swap');
+
+    body {
+        background-color: #f0f0f0;
+        color: black;
+        font-family: 'Graphik', sans-serif;
+    }
+    .main {
+        background-color: #f0f0f0;
+    }
+    .stApp {
+        background-color: #f0f0f0;
+    }
+    header {
+        background-color: #660094 !important;
+        padding: 10px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo {
+        height: 30px;
+        width: auto;
+        margin-right: 20px;  /* Space between logo and next item */
+    }
+    .header-content {
+        display: flex;
+        align-items: center;
+    }
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    h1 {
+        color: black;
+        margin: 0;
+        padding: 0;
+    }
+
+    .generated-text-box {
+        border: 3px solid #A020F0; /* Thick border */
+        padding: 20px;  
+        border-radius: 10px; /* Rounded corners */
+        color: black; /* Text color */
+        background-color: #FFFFFF; /* Background color matching theme */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+# Adding the logo and other elements in the header st-emotion-cache-18ni7ap ezrtsby2
+st.markdown(
+    f"""
+    <header tabindex="-1" data-testid="stHeader" class="st-emotion-cache-18ni7ap ezrtsby2">
+        <div data-testid="stDecoration" id="stDecoration" class="st-emotion-cache-1dp5vir ezrtsby1"></div>
+        <div class="header-content">
+            <!-- Add the logo here -->
+            <img src="https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png" class="logo" alt="Logo">
+        
+    </header>
+
+    """,
+    unsafe_allow_html=True
+)
