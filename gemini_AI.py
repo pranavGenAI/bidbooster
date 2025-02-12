@@ -389,7 +389,7 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
-    user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
+    user_question = st.text_input(key="user_question")
 
     if user_question and api_key:  # Ensure API key and user question are provided
         if user_question:
