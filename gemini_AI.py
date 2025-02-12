@@ -204,7 +204,20 @@ def update_token_count(username, count):
     token_counts[username] = count
     write_token_counts(token_counts)
 
+st.markdown("""
+    <style>
+        /* Change the background color of the input box */
+        div[data-baseweb="input"] > div {
+            background-color: white !important;
+            border-radius: 5px !important;
+        }
 
+        /* Make the label (caption) background transparent */
+        label {
+            background-color: transparent !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 def login():
     col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
     with col2:  # Center the input fields in the middle column
