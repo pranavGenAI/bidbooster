@@ -209,7 +209,7 @@ st.markdown("""
         /* Target the container that holds the text label */
         div[data-testid="stMarkdownContainer"] p {
             background-color: transparent !important;
-            color: white !important; /* Optional: Change text color */
+            color: Black !important; /* Optional: Change text color */
             font-weight: bold !important; /* Optional: Make text bold */
         }
 
