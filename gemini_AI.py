@@ -363,7 +363,7 @@ st.markdown("""
         /* Make the label background transparent */
         label[for="user_question"] {
             background-color: transparent !important;
-            color: white !important; /* Optional: Change text color if needed */
+            color: Black !important; /* Optional: Change text color if needed */
             font-weight: bold; /* Optional: Make it bold */
         }
 
