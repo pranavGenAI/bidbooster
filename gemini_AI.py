@@ -391,7 +391,7 @@ def main():
                 # }
 
             </style>
-            <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
+            <p> Bid Query Bot </p>    
 
         """, unsafe_allow_html=True)
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
