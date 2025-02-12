@@ -206,18 +206,21 @@ def update_token_count(username, count):
 
 st.markdown("""
     <style>
-        /* Change the background color of the input box */
+        /* Target the container that holds the text label */
+        div[data-testid="stMarkdownContainer"] p {
+            background-color: transparent !important;
+            color: white !important; /* Optional: Change text color */
+            font-weight: bold !important; /* Optional: Make text bold */
+        }
+
+        /* Change the input box background to white */
         div[data-baseweb="input"] > div {
             background-color: white !important;
             border-radius: 5px !important;
         }
-
-        /* Make the label (caption) background transparent */
-        label {
-            background-color: transparent !important;
-        }
     </style>
 """, unsafe_allow_html=True)
+
 def login():
     col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
     with col2:  # Center the input fields in the middle column
