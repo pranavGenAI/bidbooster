@@ -357,23 +357,6 @@ def query_refiner(conversation, user_question):
     print("Response of refined query is ----->",response)
     return response
 
-st.markdown("""
-    <style>
-        /* Make the label background transparent */
-        label[for="user_question"] {
-            background-color: transparent !important;
-            color: Black !important; /* Optional: Change text color if needed */
-            font-weight: bold; /* Optional: Make it bold */
-        }
-
-        /* Change the input box background to white */
-        div[data-baseweb="input"] > div {
-            background-color: white !important;
-            border-radius: 5px !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 def main():
 
     st.header("Chat with Bid Query Bot")
