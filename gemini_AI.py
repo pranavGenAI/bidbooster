@@ -204,21 +204,21 @@ def update_token_count(username, count):
     token_counts[username] = count
     write_token_counts(token_counts)
 
+
 st.markdown("""
     <style>
-        /* Target the container that holds the text label */
-        div[data-testid="stMarkdownContainer"] p {
+        /* Make the label background transparent */
+        label[for="user_question"] {
             background-color: transparent !important;
-            
         }
 
-#         /* Change the input box background to white */
-#         div[data-baseweb="input"] > div {
-#             background-color: white !important;
-#             border-radius: 5px !important;
-#         }
-#     </style>
-# """, unsafe_allow_html=True)
+        /* Change the input box background to white */
+        div[data-baseweb="input"] > div {
+            background-color: white !important;
+            border-radius: 5px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 def login():
     col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns with equal width
