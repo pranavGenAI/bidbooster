@@ -379,12 +379,12 @@ def main():
         st.markdown("""
             <style>
 
-                .animated-gradient-text {
-                    font-family: "Graphik Semibold";
-                    font-size: 26px;
-                    color: #FFFF;
-                    # transition: color 0.5s, text-shadow 0.5s;
-                }
+                # .animated-gradient-text {
+                #     font-family: "Graphik Semibold";
+                #     font-size: 26px;
+                #     color: #FFFF;
+                #     # transition: color 0.5s, text-shadow 0.5s;
+                # }
 
                 # .animated-gradient-text:hover {
                 #     animation: animate 5s linear infinite;
