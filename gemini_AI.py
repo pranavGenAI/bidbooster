@@ -204,14 +204,13 @@ def update_token_count(username, count):
     token_counts[username] = count
     write_token_counts(token_counts)
 
-# st.markdown("""
-#     <style>
-#         /* Target the container that holds the text label */
-#         div[data-testid="stMarkdownContainer"] p {
-#             background-color: transparent !important;
-#             color: Black !important; /* Optional: Change text color */
-#             font-weight: bold !important; /* Optional: Make text bold */
-#         }
+st.markdown("""
+    <style>
+        /* Target the container that holds the text label */
+        div[data-testid="stMarkdownContainer"] p {
+            background-color: transparent !important;
+            
+        }
 
 #         /* Change the input box background to white */
 #         div[data-baseweb="input"] > div {
