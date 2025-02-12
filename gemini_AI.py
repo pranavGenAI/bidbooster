@@ -159,12 +159,7 @@ st.markdown("""
         Bid Response Evaluation AI: Evaluates Bid responses!
     </h2>
 """, unsafe_allow_html=True)
-#st.image("https://media1.tenor.com/m/6o864GYN6wUAAAAC/interruption-sorry.gif", width=1000)
-# st.image("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjl2dGNiYThobHplMG81aGNqMjdsbWwwYWJmbTBncGp6dHFtZTFzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CGP9713UVzQ0BQPhSf/giphy.gif", width=50)
 
-
-# This is the first API key input; no need to repeat it in the main function.
-#api_key = st.secrets['GEMINI_API_KEY']
 api_key = 'AIzaSyBJJfXHfC80NWtiKGA57aO2mGsT-aD9fhQ'
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
@@ -377,37 +372,23 @@ def main():
 
 
     with st.sidebar:
-        st.image("https://www.vgen.it/wp-content/uploads/2021/04/logo-accenture-ludo.png", width=150)
+        st.image("https://www.clutch.com/wp-content/uploads/2018/04/Accenture-logo-no-background.png", width=150)
         st.markdown("")
         st.markdown("")
         
         st.markdown("""
             <style>
-                @keyframes animate {
-                    0%, 18%, 20%, 50.1%,60%, 65.1%, 80%,90.1%,92% {
-                        color: #0e3742;
-                        text-shadow: none;
-                    }
-                    18.1%, 20.1%, 30%,50%,60.1%,65%,80.1%,90%, 92.1%,100% {
-                        color: #fff;
-                        text-shadow: 0 0 10px #03bcf4,
-                                    0 0 20px #03bcf4,
-                                    0 0 40px #03bcf4,
-                                    0 0 80px #03bcf4,
-                                    0 0 160px #03bcf4;
-                    }
-                }
 
                 .animated-gradient-text {
                     font-family: "Graphik Semibold";
                     font-size: 26px;
-                    color: #FFF;
-                    transition: color 0.5s, text-shadow 0.5s;
+                    color: #FFFF;
+                    # transition: color 0.5s, text-shadow 0.5s;
                 }
 
-                .animated-gradient-text:hover {
-                    animation: animate 5s linear infinite;
-                }
+                # .animated-gradient-text:hover {
+                #     animation: animate 5s linear infinite;
+                # }
 
             </style>
             <p class = animated-gradient-text> Bid Query Bot 💬 </p>    
