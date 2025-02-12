@@ -356,12 +356,20 @@ def query_refiner(conversation, user_question):
     return response
 
 st.markdown("""
-<style>
-.small-font {
-    font-size:13px !important;
-    color: lightgrey !important;
-}
+    <style>
+        /* Make the label background transparent */
+        label[for="user_question"] {
+            background-color: transparent !important;
+            color: white !important; /* Optional: Change text color if needed */
+            font-weight: bold; /* Optional: Make it bold */
+        }
 
+        /* Change the input box background to white */
+        div[data-baseweb="input"] > div {
+            background-color: white !important;
+            border-radius: 5px !important;
+        }
+    </style>
 """, unsafe_allow_html=True)
 
 def main():
