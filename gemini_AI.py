@@ -361,29 +361,36 @@ def main():
     st.header("Chat with Bid Query Bot")
     st.markdown("""
     <style>
-        /* Make the entire label container transparent */
+        /* Ensure the entire label has no background */
         label[data-testid="stWidgetLabel"] {
+            background: none !important;
             background-color: transparent !important;
+            color: white !important; /* Optional: Change text color */
+            font-weight: bold !important; /* Optional: Make text bold */
         }
 
-        /* Target the inner div inside the label */
+        /* Target the inner div container */
         label[data-testid="stWidgetLabel"] div[data-testid="stMarkdownContainer"] {
+            background: none !important;
             background-color: transparent !important;
         }
 
-        /* Make the text inside transparent background */
+        /* Ensure the paragraph inside has no background */
         label[data-testid="stWidgetLabel"] p {
+            background: none !important;
             background-color: transparent !important;
-            
+            color: white !important; /* Optional: Keep text visible */
+            font-weight: bold !important; /* Optional */
         }
 
         /* Change the input box background to white */
-        div[data-baseweb="input"] > div {
+        div[data-baseweb="input"] {
             background-color: white !important;
             border-radius: 5px !important;
+            padding: 5px !important;
         }
     </style>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
     user_question = st.text_input("Ask a Question from the RFP Files", key="user_question")
 
