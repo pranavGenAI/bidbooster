@@ -191,7 +191,7 @@ def get_vector_store(text_chunks, api_key):
     vector_store.save_local("faiss_index")
 
 def get_conversational_chain():
-    prompt_template = """Consider yourself as bid query resolver. Vendor will ask you question and your job is to answer the user question based on the context provided. Format answer in better way. Answer should end with disclaimer that this is AI generated content.
+    prompt_template = """Consider yourself as bid query resolver. Vendor will ask you question and your job is to answer the user question based on the context provided. Format answer in better way with bold, bullets wherever applicable. Answer should end with disclaimer that this is AI generated content.
     Context:\n {context}?\n
     Question: \n{question}\n .
     Answer:
