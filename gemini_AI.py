@@ -338,15 +338,15 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Graphik:wght@400;700&display=swap');
 
     body {
-        background-color: #000000;
+        background-color: #ffffff;
         color: black;
         font-family: 'Graphik', sans-serif;
     }
     .main {
-        background-color: #000000;
+        background-color: #ffffff;
     }
     .stApp {
-        background-color: #000000;
+        background-color: #ffffff;
     }
     header {
         background-color: #660094 !important;
