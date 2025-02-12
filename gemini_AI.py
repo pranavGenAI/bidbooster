@@ -376,24 +376,24 @@ def main():
         st.markdown("")
         st.markdown("")
         
-        st.markdown("""
-            <style>
+        # st.markdown("""
+        #     <style>
 
-                # .animated-gradient-text {
-                #     font-family: "Graphik Semibold";
-                #     font-size: 26px;
-                #     color: #FFFF;
-                #     # transition: color 0.5s, text-shadow 0.5s;
-                # }
+        #         # .animated-gradient-text {
+        #         #     font-family: "Graphik Semibold";
+        #         #     font-size: 26px;
+        #         #     color: #FFFF;
+        #         #     # transition: color 0.5s, text-shadow 0.5s;
+        #         # }
 
-                # .animated-gradient-text:hover {
-                #     animation: animate 5s linear infinite;
-                # }
+        #         # .animated-gradient-text:hover {
+        #         #     animation: animate 5s linear infinite;
+        #         # }
 
-            </style>
-            <p> Bid Query Bot </p>    
+        #     </style>
+        #     <p> Bid Query Bot </p>    
 
-        """, unsafe_allow_html=True)
+        # """, unsafe_allow_html=True)
         pdf_docs = st.file_uploader("Upload your RFP Files and Click on the Submit & Process Button", accept_multiple_files=True, key="pdf_uploader")
         if st.button("Submit & Process", key="process_button") and api_key:  # Check if API key is provided before processing
             with st.spinner("Processing..."):
