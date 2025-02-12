@@ -221,7 +221,7 @@ def user_input(user_question, api_key):
     # Check if enough tokens are available
     if st.session_state.tokens_remaining > 0:
         # Proceed with displaying the response and deducting tokens
-        st.write("Bid Query Bot: ", response["output_text"])
+        st.write("", response["output_text"])
         st.session_state.tokens_consumed += token_cost  # Deduct tokens based on response length
         st.session_state.tokens_remaining -= token_cost
 
